@@ -227,7 +227,16 @@ watch(
           </template>
           新增消息组
         </n-button>
-
+  <n-grid x-gap="10"
+                  :cols="2">
+            <n-gi>
+              <n-form-item label="开始时间">
+                <n-date-picker v-model:value="formValue.nextPlanDate"
+                               type="datetime"
+                               clearable />
+              </n-form-item>
+            </n-gi>
+          </n-grid>
         <n-form-item label="分配方式"
                      path="sendMethod">
           <n-tabs type="segment"

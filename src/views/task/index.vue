@@ -23,6 +23,16 @@
               </template>
               批量发送
             </n-button>
+            
+            <n-button type="primary"
+                      @click="messagPrivateAndForwardShowFlag += 1">
+              <template #icon>
+                <n-icon>
+                  <Pencil />
+                </n-icon>
+              </template>
+              批量转发私聊
+            </n-button>
             <n-button type="primary"
                       @click="messagePrivateShowFlag += 1">
               <template #icon>
@@ -107,6 +117,8 @@
 
     <SendMessage @reload-table="reloadTable"
                  :messageShowFlag />
+    <SendMessagePrivateAndForward @reload-table="reloadTable"
+                 :messagPrivateAndForwardShowFlag />
     <SendMessagePrivate @reload-table="reloadTable"
                         :messagePrivateShowFlag />
 
@@ -135,6 +147,7 @@ import {
 import { deleteTaskList, listTask, resend, UserInfor } from '@/api/task';
 import SendMessage from './SendMessage.vue';
 import SendMessagePrivate from './SendMessagePrivate.vue';
+import SendMessagePrivateAndForward from './SendMessagePrivateAndForward.vue';
 import SendMessageForward from './SendMessageForward.vue';
 import { useFriendStore } from '@/store/modules/friend';
 import TaskDetail from '@/views/task/TaskDetail.vue';
@@ -155,6 +168,7 @@ let checkedRowKeys = ref<DataTableRowKey[]>([]);
 
 let messageShowFlag = ref<Number>(0);
 let messagePrivateShowFlag = ref<Number>(0);
+let messagPrivateAndForwardShowFlag = ref<Number>(0)
 let messageForwordFlag = ref<Number>(0);
 let taskDetailShowFlag = ref<Number>(0);
 let taskDetailRecord = ref();

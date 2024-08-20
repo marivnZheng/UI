@@ -16,7 +16,7 @@ export const taskDetailColumns: BasicColumn<ListData>[] = reactive([
       return h('span', { style: { fontWeight: 'bold' } }, { default: () => '任务目标' });
     },
     key: 'targ',
-    width: 100,
+    width: 150,
   },
   {
     title() {
@@ -54,7 +54,7 @@ export const taskDetailColumns: BasicColumn<ListData>[] = reactive([
       return h('span', { style: { fontWeight: 'bold' } }, { default: () => '执行时间' });
     },
     key: 'jobDetailDate',
-    width: 150,
+    width: 200,
     render(row) {
       return h(
         'span',

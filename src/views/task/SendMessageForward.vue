@@ -26,7 +26,7 @@ let confirmBtnLoading = ref<Boolean>(false);
 
 let formValue = ref({
   accountList: [],
-  targActive: '1',
+  targActive: '2',
   accountLoopType: '1',
   accountLoop: 2,
   messageGroup: [
@@ -164,7 +164,7 @@ async function sendMsg() {
 
       formValue.value = {
         accountList: [],
-        targActive: '1',
+        targActive: '2',
         accountLoopType: '1',
         accountLoop: 2,
         messageGroup: [

@@ -217,20 +217,6 @@ export default defineComponent({
       () => currentSysAccountId.value,
       (newValue) => {
         friendStore.currentSysAccountId = newValue;
-        accountList.value.forEach((item, index) => {
-          if (item.sysAccountId == friendStore.currentSysAccountId) {
-            syncAccount(item).then(async (res) => {
-              console.log(res);
-              if (res.data.code == 200) {
-                message.success('同步成功');
-              } else if (res.data.code == 444) {
-                message.error('账号失效');
-              } else {
-                message.error('同步失败');
-              }
-            });
-          }
-        });
       }
     );
 
