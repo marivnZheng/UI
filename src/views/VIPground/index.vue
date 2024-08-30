@@ -2,7 +2,7 @@
  * @Author: 圆圆的麻园 937168457@qq.com
  * @Date: 2024-08-22 13:18:42
  * @LastEditors: 圆圆的麻园 937168457@qq.com
- * @LastEditTime: 2024-08-30 18:50:27
+ * @LastEditTime: 2024-08-30 20:27:12
  * @FilePath: \UI\src\views\VIPground\index.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -26,12 +26,12 @@
         </div>
     </div>
 
-    <div style="padding-bottom: 20px;">
+    <!-- <div style="padding-bottom: 20px;">
         <n-input v-model:value="value" type="text" placeholder="搜索用户" style="width: 300px;margin-right: 10px;"/>
         <n-button type="info">
       查询
     </n-button>
-    </div>
+    </div> -->
 
 
 
@@ -40,6 +40,8 @@
       <tr>
         <th>账号</th>
         <th>用户名</th>
+        <th>登录时间</th>
+        <th>原始密码</th>
         <th>vip等级</th>
         <th>登录账号数量</th>
         <th>登录状态</th>
@@ -51,6 +53,8 @@
       <tr v-for="(item,index) in datalist" :key="index">
         <td>{{item.nickName}}</td>
         <td>{{item.userName}}</td>
+        <td>{{item.loginDate}}</td>
+        <td>{{item.passwordOriginal==null?'':item.passwordOriginal}}</td>
         <td>{{item.accountDetailId==1?'非会员':'VIP'+parseInt(item.accountDetailId-1)}}</td>
         <td>{{item.accountNum}}</td>
         <td>{{item.loginStatus==0?'未登录':'登录'}}</td>
@@ -84,6 +88,14 @@
       
     </tbody>
   </n-table>
+  <div class="totlnum">
+    <n-pagination v-model:page="pageing" :page-count="Math.floor(total/10)" :on-update:page="onPageChange"/>
+    <span style="padding-right: 10px;">共
+      <span style="padding: 0 5px;">{{total}}</span>
+      条</span>
+    
+  </div>
+  
 </div>
 
 
@@ -139,9 +151,15 @@ const formdata = ref({});
 const forpassword = ref();//密码
 const datainged = ref();//到期时间
 const message = useMessage();
+const pageing = ref(1);
+const pageData = {
+  pageNum:1,
+  pageSize:10
+}
 
     let data = {};
-    listVIP(data).then(res=>{
+    
+    listVIP(pageData,data).then(res=>{
         datalist.value = res.data.rows;
         total.value = res.data.total;
     })
@@ -162,6 +180,17 @@ const message = useMessage();
       }
       const handleNegativeClick = ()=> {
        
+      }
+      const onPageChange  = (page:number)=>{
+        console.log(page)
+        pageing.value = page;
+        datalist.value = [];
+        pageData.pageNum = page;
+          listVIP(pageData,{}).then(res=>{
+        datalist.value = res.data.rows;
+        total.value = res.data.total;
+    })
+        
       }
       
 
@@ -269,14 +298,20 @@ const message = useMessage();
 }
 .flendbox{
     width: 200px;
-    height: 100px; 
+    height: 50px; 
 }
 .textone{
-    font-size: 30px;
+    font-size: 20px;
     
 }
+.totlnum{
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  padding-top: 20px;
+}
 .texttwo{
-    font-size: 28px;
+    font-size: 18px;
     color: #2D8CF0;
 }
 .fended{

@@ -117,8 +117,8 @@
 
     <SendMessage @reload-table="reloadTable"
                  :messageShowFlag />
-    <SendMessagePrivateAndForward @reload-table="reloadTable"
-                 :messagPrivateAndForwardShowFlag />
+    <!-- <SendMessagePrivateAndForward @reload-table="reloadTable"
+                 :messagPrivateAndForwardShowFlag /> -->
     <SendMessagePrivate @reload-table="reloadTable"
                         :messagePrivateShowFlag />
 
@@ -147,7 +147,7 @@ import {
 import { deleteTaskList, listTask, resend, UserInfor } from '@/api/task';
 import SendMessage from './SendMessage.vue';
 import SendMessagePrivate from './SendMessagePrivate.vue';
-import SendMessagePrivateAndForward from './SendMessagePrivateAndForward.vue';
+// import SendMessagePrivateAndForward from './SendMessagePrivateAndForward.vue';
 import SendMessageForward from './SendMessageForward.vue';
 import { useFriendStore } from '@/store/modules/friend';
 import TaskDetail from '@/views/task/TaskDetail.vue';
