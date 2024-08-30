@@ -118,6 +118,10 @@
           headerMenuSelectKey.value = (activeMenu ? activeMenu : firstRouteName) || '';
         }
         updateSelectedKeys();
+        if(localStorage.getItem('username') != 'admin'){
+          menus.value.splice(5, 1);
+          }
+       
       }
 
       // 点击菜单

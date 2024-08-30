@@ -310,11 +310,10 @@ export default defineComponent({
             // 移除标签页
             localStorage.removeItem(TABS_ROUTES);
             localStorage.removeItem('username');
-            router
-              .replace({
+            router.replace({
                 name: 'Login',
                 query: {
-                  redirect: route.fullPath,
+                  redirect: route.fullPath == '/VIPground/index'?'/account/index':route.fullPath,
                 },
               })
               .finally(() => location.reload());
