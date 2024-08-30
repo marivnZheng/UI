@@ -158,7 +158,7 @@
   const LOGIN_NAME = PageEnum.BASE_LOGIN_NAME;
   //打开客服页面 
   const gokefuen = ()=>{
-  const url = 'https://t.me/jlkf9999';
+  const url = 'https://t.me/jlkfvip';
       window.open(url, '_blank');
 }
 

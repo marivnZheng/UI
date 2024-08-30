@@ -13,7 +13,7 @@ export enum PageEnum {
 //注册
   PASE_REGISTER = '/register',
   //客服
-  KEFU_NAME = 'https://t.me/jlkf9999 ',
+  KEFU_NAME = 'https://t.me/jlkfvip',
   //重定向
   REDIRECT = '/redirect',
   REDIRECT_NAME = 'Redirect',

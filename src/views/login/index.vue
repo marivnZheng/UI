@@ -130,7 +130,7 @@ const formInline = reactive({
   isCaptcha: true,
 });
 const gokefuen = ()=>{
-  const url = 'https://t.me/jlkf9999';
+  const url = 'https://t.me/jlkfvip';
       window.open(url, '_blank');
 }
 const rules = {

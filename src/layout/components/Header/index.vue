@@ -69,20 +69,10 @@
                 value-field="sysAccountId"
                 :options="accountList"
                 style="width: 150px" />
-      <div class="layout-header-trigger layout-header-trigger-min">
-        <n-tooltip placement="bottom">
-          <template #trigger>
-            <n-icon size="18">
-              <component is="SearchOutlined"
-                         v-on="" />
-            </n-icon>
-          </template>
-          <span>搜索</span>
-        </n-tooltip>
-      </div>
-      <n-popover trigger="hover">
+
+      <n-popover trigger="hover" >
         <template #trigger>
-          <div style="display: flex;align-items: center;">
+          <div style="display: flex;align-items: center;margin-left:12px">
             <img :src="websiteConfig.folokefulogo"
                  style="width: 16px;height: 16px"
                  alt="" />
@@ -97,28 +87,24 @@
           <span style="padding-left: 10px">在线客服</span>
         </div>
         <div class="itemfu"
+        style="padding-bottom: 10px;"
              @click="gofly(2)">
           <img :src="websiteConfig.kefulogo"
                style="width: 15px;height: 15px"
                alt="" />
           <span style="padding-left: 10px">官方群组</span>
         </div>
+            <div class="itemfu"
+             style="padding-bottom: 10px;"
+             @click="gofly(3)">
+          <img :src="websiteConfig.kefulogo"
+               style="width: 15px;height: 15px"
+               alt="" />
+          <span style="padding-left: 10px">教程频道</span>
+        </div>
       </n-popover>
 
-      <div class="layout-header-trigger layout-header-trigger-min"
-           v-for="item in iconList"
-           :key="item.icon">
-        <n-tooltip placement="bottom">
-          <template #trigger>
-            <n-icon size="18">
-              <component :is="item.icon"
-                         v-on="item.eventObject || {}" />
-            </n-icon>
-          </template>
-          <span>{{ item.tips }}</span>
-        </n-tooltip>
-      </div>
-      <!--切换全屏-->
+     
       <div class="layout-header-trigger layout-header-trigger-min">
         <n-tooltip placement="bottom">
           <template #trigger>
@@ -147,19 +133,7 @@
           </div>
         </n-dropdown>
       </div>
-      <!--设置-->
-      <div class="layout-header-trigger layout-header-trigger-min"
-           @click="openSetting">
-        <n-tooltip placement="bottom-end">
-          <template #trigger>
-            <n-icon size="18"
-                    style="font-weight: bold">
-              <SettingOutlined />
-            </n-icon>
-          </template>
-          <span>项目配置</span>
-        </n-tooltip>
-      </div>
+      
     </div>
   </div>
   <!--项目配置-->
@@ -344,9 +318,12 @@ export default defineComponent({
 
     function gofly(type) {
       if (type == 1) {
-        window.open('https://t.me/jlkf9999');
-      } else {
-        window.open('https://t.me/jlkf99999');
+        window.open('https://t.me/jlkfvip');
+      } else if(type == 2){
+        window.open('https://t.me/jlkfvip1');
+      }
+      else if(type == 3){
+        window.open('https://t.me/jlkfvip2');
       }
     }
     // 图标列表
