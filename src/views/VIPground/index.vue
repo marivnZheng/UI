@@ -1,8 +1,8 @@
 <!--
  * @Author: 圆圆的麻园 937168457@qq.com
  * @Date: 2024-08-22 13:18:42
- * @LastEditors: 圆圆的麻园 937168457@qq.com
- * @LastEditTime: 2024-09-02 20:03:34
+ * @LastEditors: 123fantao 937168457@qq.com
+ * @LastEditTime: 2024-09-03 19:44:33
  * @FilePath: \UI\src\views\VIPground\index.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -26,21 +26,19 @@
         </div>
     </div>
 
-    <div style="display: flex;">
+    <!-- <div style="display: flex;">
       <div style="padding-bottom: 20px;padding-right: 40px;">
         <n-input v-model:value="valuename.userName" type="text" placeholder="请输入" style="width: 150px;margin-right: 10px;"/>
         <n-button type="info" @click="getName">
       查询
     </n-button>
     </div>
-
-    <!-- <div style="padding-bottom: 20px;">
+ <div style="padding-bottom: 20px;">
         <n-input v-model:value="valuename.nickName" type="text" placeholder="请输入账号" style="width: 150px;margin-right: 10px;"/>
         <n-button type="info" @click="getName">
       账号查询
     </n-button>
     </div> -->
-    </div>
     
 
 
@@ -112,8 +110,8 @@
       
   </div>
   <div class="tibottom">
-        <n-button size="tiny" style="margin-right: 10px;">重置</n-button>
-        <n-button size="tiny" type="info">确定</n-button>
+        <n-button size="tiny" style="margin-right: 10px;" @click="checkedValue = null">重置</n-button>
+        <n-button size="tiny" type="info" @click='quedingvip'>确定</n-button>
       </div>
     </n-popover>
 
@@ -122,7 +120,7 @@
         <th style="width: 9%;">
           <div class="fovm">
           <span>登录账号数量</span>
-          <n-popover
+          <!-- <n-popover
       placement="bottom"
       trigger="click"
       @update:show="handleUpdateShow" 
@@ -148,13 +146,13 @@
         <n-button size="tiny" style="margin-right: 10px;">重置</n-button>
         <n-button size="tiny" type="info">确定</n-button>
       </div>
-    </n-popover>
+    </n-popover> -->
           </div>
         </th>
         <th style="width: 8%;">
           <div class="fovm">
             <span>登录状态</span>
-            <n-popover
+            <!-- <n-popover
       placement="bottom"
       trigger="click"
       @update:show="handleUpdateShow" 
@@ -180,7 +178,7 @@
         <n-button size="tiny" style="margin-right: 10px;">重置</n-button>
         <n-button size="tiny" type="info">确定</n-button>
       </div>
-    </n-popover>
+    </n-popover> -->
           </div>
           
         </th>
@@ -296,10 +294,19 @@ const checkedValue = ref(null);
 const pageing = ref(1);
 const valuename = ref({
   userName:'',
+  accountDetailId:null
 });
 const handleChange = (e)=>{
   checkedValue.value = e.target._value;
-  console.log(e.target._value);
+  valuename.value.accountDetailId = checkedValue.value;
+}
+const quedingvip = ()=>{
+  message.success('查询成功');
+          datalist.value = [];
+          listVIP(pageData,valuename.value).then(res=>{
+        datalist.value = res.data.rows;
+        total.value = res.data.total;
+    })
 }
 
 const pageData = {
