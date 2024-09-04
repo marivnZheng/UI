@@ -14,7 +14,7 @@
     <div class="tabbos">
         <div class="flendbox">
             <div class="textone">注册数量</div>
-            <div class="texttwo">{{total}}</div>
+            <div class="texttwo">{{datanum.total}}</div>
         </div>
         <div class="flendbox">
             <div class="textone">VIP用户</div>
